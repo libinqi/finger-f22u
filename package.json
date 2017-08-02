@@ -1,0 +1,25 @@
+{
+  "name": "finger-f22u",
+  "description": "finger f22u sdk for node addon",
+  "main": "index.js",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/libinqi/finger-f22u.git"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "node-gyp rebuild --arch=ia32",
+    "copy": "copy build\\Release\\F22U.node bin\\F22U.node",
+    "install": "npm run build && npm run copy",
+    "test": "node test.js"
+  },
+  "author": {
+    "name": "libinqi",
+    "email": "libinqi@outlook.com"
+  },
+  "bugs": {
+    "url": "https://github.com/libinqi/finger-f22u/issues"
+  },
+  "license": "MIT"
+}
