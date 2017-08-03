@@ -21,7 +21,6 @@ try {
 	
 	setTimeout(function () {
 		result = finger.pause();
-		console.log(result);
 		console.log('停止读取指纹：', result > 0 ? '成功' : '失败');
 	}, 20000);
 } catch (error) {
