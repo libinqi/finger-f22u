@@ -2,7 +2,7 @@ try {
 	var fs = require('fs');
 	var finger = require('./lib/F22U');
 	var result = finger.open(function (fingerData) {
-		if (fingerData.type == 1) {
+		if (fingerData.type == 1 && fingerData.isHeightImage) {
 			var imageBuffer = new Buffer(fingerData.data, 'base64');
 			fs.writeFile("finger_image.bmp", imageBuffer, function (err) {
 				if (err) {
@@ -18,7 +18,7 @@ try {
 
 	result = finger.start(2, 75, 15, 100);
 	console.log('开启读取指纹：', result > 0 ? '成功' : '失败');
-	
+
 	setTimeout(function () {
 		result = finger.pause();
 		console.log('停止读取指纹：', result > 0 ? '成功' : '失败');

@@ -298,18 +298,26 @@ void F22U::execute()
         receiver.type = ReceiveType::Image;
 
         memcpy(receiver.fingerImageData, m_pImgData, sizeof(m_pImgData));
-        doReceive(receiver);
 
         if (getFingerFeature())
         {
+            receiver.isHeightImage = 1;
+            doReceive(receiver);
+
             if (getEncrollTemplate())
             {
+                suspend();
+
                 receiver.type = ReceiveType::Feature;
 
                 memcpy(receiver.fingerTemplateData, m_pMbData, sizeof(m_pMbData));
                 doReceive(receiver);
-                suspend();
             }
+        }
+        else
+        {
+            receiver.isHeightImage = 0;
+            doReceive(receiver);
         }
     }
 }

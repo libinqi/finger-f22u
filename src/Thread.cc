@@ -195,6 +195,7 @@ Local<Value> Thread::getObject(Isolate *isolate, Receiver receiver)
     {
         std::string mbStr = bmp_encode(receiver.fingerImageData);
         data->Set(String::NewFromUtf8(isolate, "type"), Number::New(isolate, receiver.type));
+        data->Set(String::NewFromUtf8(isolate, "isHeightImage"), Number::New(isolate, receiver.isHeightImage));
         data->Set(String::NewFromUtf8(isolate, "data"), String::NewFromUtf8(isolate, mbStr.c_str()));
         break;
     }
